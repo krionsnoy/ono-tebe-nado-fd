@@ -58,6 +58,7 @@
   background-position: center;
   background-size: cover;
 }
+
 .overlay {
   position: absolute;
   top: 0;
@@ -67,48 +68,51 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
-.ono-tebe-nado {
+
+.title {
   z-index: -1;
   display: grid;
   grid-template-columns: 0.75fr 1.25fr 1fr;
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    "ono . ."
-    ". tebe ."
-    ". . nado";
+    "title-element-start . ."
+    ". title-element-center ."
+    ". . title-element-end";
 
   justify-items: center;
   align-items: center;
+  box-sizing: border-box;
   width: 1000px;
   margin: 0 auto;
   padding-top: 165px;
   padding-bottom: 107px;
-
-  font-size: 48px;
   line-height: 1.3;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  box-sizing: border-box;
-}
-.ono {
-  z-index: 1;
-  grid-area: ono;
-  justify-self: start;
-  color: white;
 }
 
-.tebe {
+.title-element {
   z-index: 1;
-  grid-area: tebe;
+  color: white;
+  font-weight: 700;
+  font-size: 100px;
+}
+
+.title-element-start {
+  grid-area: title-element-start;
+  justify-self: start;
+}
+
+.title-element-center {
+  grid-area: title-element-center;
   justify-self: center;
-  color: white;
 }
-.nado {
-  z-index: 1;
-  grid-area: nado;
+
+.title-element-end {
+  grid-area: title-element-end;
   justify-self: end;
-  color: white;
 }
+
 .description {
   position: relative;
   z-index: 1;
@@ -118,6 +122,7 @@
   padding: 0 50px 50px 50px;
   color: white;
 }
+
 .description-text-main {
   font-family: "Raleway", sans-serif;
   font-weight: 100;
@@ -128,8 +133,7 @@
   word-spacing: 15px;
 }
 
-.make-stavka {
-  grid-area: make-stavka;
+.description-button {
   width: 250px;
   height: 50px;
   border: 1px solid white;
@@ -151,11 +155,11 @@
   padding-bottom: 20px;
   padding-left: 60px;
   font-family: "Raleway", sans-serif;
-  font-weight: 700;
+  font-weight: 700px;
   font-size: 40px;
-
   text-transform: uppercase;
 }
+
 .lots-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -170,9 +174,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: auto;
   min-height: 580px;
   padding: 48px 40px;
   background-repeat: no-repeat;
@@ -180,36 +181,51 @@
   background-size: cover;
 }
 
-.lots-item-first {
+.lots-item-card-start {
   background-image: url(../images/card-lot-01.jpg);
 }
 
-.lots-item-second {
+.lots-item-card-center {
   background-image: url(../images/card-lot-02.jpg);
 }
 
-.lots-item-third {
+.lots-item-card-end {
   background-image: url(../images/card-lot-03.jpg);
 }
 
 .lots-link {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   color: white;
   font-family: "Raleway", sans-serif;
-  font-weight: bold;
-  font-size: 21px;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  text-decoration: none;
+}
+
+.lots-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.lots-link h3 {
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  font-size: 22px;
+  text-decoration: underline;
   text-transform: uppercase;
 }
 
 .lots-text {
-  position: relative;
-  z-index: 1;
-  color: white;
-  font-family: "Raleway", sans-serif;
+  margin: 0;
+  font-weight: 400px;
   font-size: 20px;
+  font-style: normal;
+  line-height: 1.2;
+  text-decoration: none;
 }
 
 .learn-more {
@@ -225,11 +241,12 @@
 .about {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: auto auto;
   max-width: 1100px;
   margin: 160px auto;
   padding: 0 20px;
 }
+
 .circle {
   display: flex;
   justify-self: center;
@@ -252,8 +269,12 @@
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   font-size: 40px;
-  font-style: bold;
   text-transform: uppercase;
+}
+
+.about > div:last-child {
+  grid-column: 2 / -1;
+  grid-row: 2;
 }
 
 .about_text_mini {
@@ -265,6 +286,10 @@
   font-style: normal;
 }
 
+.about_text_mini:first-child {
+  margin-top: 0; 
+}
+
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -274,7 +299,7 @@
   font-style: normal;
 }
 
-.footer-address {
+.address {
   font-family: "Raleway", sans-serif;
   font-style: normal;
   line-height: 1.3;
@@ -291,6 +316,7 @@
   justify-content: space-around;
   list-style: none;
 }
+
 .footer-image {
   width: 48px;
   height: 48px;
